@@ -1,7 +1,7 @@
 "use client";
+
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import Background from "../components/Background";
 
 export default function Chat() {
   const [message, setMessage] = useState("");
@@ -24,8 +24,9 @@ export default function Chat() {
   };
 
   return (
-    <Background image="/background-chat.png">
+    <main className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white p-6">
       <Navbar />
+
       <section className="flex flex-col items-center justify-center min-h-screen px-6 text-center">
         <h2 className="text-4xl font-bold text-blue-400 mb-4">Chat with my AI Assistant 💬</h2>
         <p className="text-gray-200 mb-6 max-w-md">
@@ -48,11 +49,12 @@ export default function Chat() {
               Send
             </button>
           </form>
+
           <div className="bg-gray-900 bg-opacity-70 p-4 rounded-xl min-h-[100px]">
             {response && <p>{response}</p>}
           </div>
         </div>
       </section>
-    </Background>
+    </main>
   );
 }

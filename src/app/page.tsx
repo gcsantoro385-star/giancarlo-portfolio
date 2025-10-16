@@ -1,7 +1,8 @@
-"use client";
+"use client"; // <--- Important!
 
 import Image from "next/image";
 import { useState } from "react";
+import Navbar from "./components/Navbar"; // import Navbar component if you have it
 
 export default function Home() {
   const [message, setMessage] = useState("");
@@ -10,7 +11,6 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setResponse("Thinking...");
-
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
@@ -26,7 +26,9 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-black text-white p-6">
-      {/* 👇 PROFILE PHOTO */}
+      <Navbar />
+
+      {/* Profile Image */}
       <div className="mb-6">
         <Image
           src="/giancarlo.jpg"
@@ -37,18 +39,14 @@ export default function Home() {
         />
       </div>
 
-      {/* 👇 NAME AND TITLE */}
-      <h1 className="text-4xl font-bold mb-4 text-blue-400 text-center">
-        Giancarlo Santoro
-      </h1>
+      {/* Name & Title */}
+      <h1 className="text-4xl font-bold mb-4 text-blue-400 text-center">Giancarlo Santoro</h1>
       <p className="text-lg mb-6 text-gray-300 text-center">
         Aspiring Network Engineer & IT Intern
       </p>
 
-      {/* 👇 CHAT UI */}
+      {/* Chat Component */}
       <div className="max-w-xl w-full bg-gray-800 rounded-2xl p-6 shadow-lg">
-        <h2 className="text-2xl font-semibold mb-4">Chat with my AI Assistant 💬</h2>
-
         <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
           <input
             type="text"
@@ -64,7 +62,6 @@ export default function Home() {
             Send
           </button>
         </form>
-
         <div className="bg-gray-900 p-4 rounded-xl min-h-[100px]">
           {response && <p>{response}</p>}
         </div>
@@ -72,4 +69,3 @@ export default function Home() {
     </main>
   );
 }
-
