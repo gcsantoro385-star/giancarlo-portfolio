@@ -3,7 +3,7 @@ import Background from "../components/Background";
 
 export default function About() {
   return (
-    <Background image="/background-about.jpg">
+    <Background image="/background-about.png">
       <Navbar />
       <section className="flex flex-col items-center justify-center min-h-screen px-6 text-center">
         <h2 className="text-4xl font-bold text-blue-400 mb-6">About Me</h2>
